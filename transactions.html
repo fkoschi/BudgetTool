@@ -1,0 +1,21 @@
+<!-- Tabelle mit Transactions -->
+		
+		<div class="col-md-10 col-md-offset-1">
+			<table class="table table-hover" ng-controller="TransController as trans">
+				<tr class="active">
+					<th></th>
+					<th>Date</th>
+					<th>Amount</th>					
+					<th>Category</th>
+					<th>Description</th>
+				</tr>
+				<tr ng-repeat="tran in trans.entries">
+					<td></td>
+					<td>{{tran.date | date:'dd-MM-yyyy'}}</td>
+					<td>{{tran.amount | currency:"€"}}</td>					
+					<td>{{tran.category}}</td>
+					<td>{{tran.description}}</td>
+				</tr>			
+			</table>
+		</div>
+	

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="BudgetTool">
+<head>
+	<title>BudgetTool</title>
+	<meta charset="utf-8">	
+	<link rel="stylesheet" type="text/css" href="bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="bootstrap-theme.min.css">
+	<link rel="stylesheet" type="text/css" href="jquery-ui.css">
+	<script type="text/javascript" src="jquery-1.11.2.min.js"></script>
+	<script type="text/javascript" src="jquery-ui.min.js"></script>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>	  -->
+	<script type="text/javascript" src="bootstrap.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<script type="text/javascript" src="chart.js"></script>
+	<script type="text/javascript" src="custom.js"></script>
+</head>
+<body>	
+	<div class="container-fluid">
+		<div class="row">
+			<header>
+				<h1 class="text-center">Budget Tool</h1>
+			</header>
+		</div>
+		<tr></tr>
+		<!-- TabController -->
+		<section ng-controller="TabController as tab">
+			<ul class="nav nav-pills">
+				<li ng-class="{ active:tab.isSet(1) }">
+					<a href ng-click="tab.setTab(1)">Summary</a>
+				</li>
+				<li ng-class="{ active:tab.isSet(2) }">
+					<a href ng-click="tab.setTab(2)">Transactions</a>
+				</li>
+			</ul>
+		<!-- Pie Chart -->
+		<canvas id="pieChart" width="400" height="400" ng-show="tab.isSet(1)"></canvas>
+		<!-- new list entry -->
+		<new-transaction ng-show="tab.isSet(2)"></new-transaction>						
+		<!-- Tabelle mit Transactions -->
+		<transaction-list ng-show="tab.isSet(2)"></transaction-list>							
+		</section>
+	</div>
+</body>
+</html>
